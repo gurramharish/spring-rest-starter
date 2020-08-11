@@ -2,12 +2,14 @@ package com.hans.srs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.hans.srs.interceptor.AuthenticationInterceptor;
 
 @Configuration
+@EnableTransactionManagement(proxyTargetClass = true)
 public class SRSWebConfiguration implements WebMvcConfigurer {
 
 	@Bean
