@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hans.srs.exception.ErrorCode;
 import com.hans.srs.exception.SRSException;
 import com.hans.srs.model.UserResponse;
 
@@ -27,7 +28,7 @@ public class UserController {
 	public ResponseEntity<UserResponse> getUserByEmailAndId(@PathVariable String userId, @PathVariable String emailId,
 			HttpServletRequest request) {
 		if (!"ghk@gmail.com".equals(emailId)) {
-			throw new SRSException("User not found", HttpStatus.NOT_FOUND, "1000");
+			throw new SRSException("User not found", HttpStatus.NOT_FOUND, ErrorCode.USER_NOT_FOUND);
 		}
 		System.out.println("Email id :: " + emailId);
 		System.out.println("User id :: " + userId);
@@ -49,7 +50,7 @@ public class UserController {
 			deleteResponse.put("statusCode", "0000");
 			return ResponseEntity.ok(deleteResponse);
 		} else {
-			throw new SRSException("User name not in the list", HttpStatus.NOT_FOUND, "1001");
+			throw new SRSException("User name not in the list", HttpStatus.NOT_FOUND, ErrorCode.USER_NOT_FOUND);
 		}
 	}
 

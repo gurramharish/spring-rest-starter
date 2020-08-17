@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.hans.srs.exception.ErrorCode;
 import com.hans.srs.exception.SRSException;
 
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
@@ -17,7 +18,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("In authentication interceptor ::: ");
 		String token = request.getHeader("x-user-token");
 		if(!"123456789".equals(token)) {
-			throw new SRSException("User Token not found or invalid", HttpStatus.UNAUTHORIZED, "9000");
+			throw new SRSException("User Token not found or invalid", HttpStatus.UNAUTHORIZED, ErrorCode.UNAUTHORIZED_ACCESS);
 		}
 		return true;
 	}

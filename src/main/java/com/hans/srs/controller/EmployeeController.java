@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hans.srs.entity.Employee;
 import com.hans.srs.entity.EmployeeDetails;
+import com.hans.srs.exception.ErrorCode;
 import com.hans.srs.exception.SRSException;
 import com.hans.srs.model.SRSResponse;
 import com.hans.srs.model.SRSStatus;
@@ -50,8 +51,6 @@ public class EmployeeController {
 		Employee employee2 = employeeRepository.save(employee);
 		System.out.println("Saving employee done ------------------------- >>>");
 		
-		List<Employee> bEmployees = employeeRepository.getByEmpDetailsBloodGroup("O+");
-		
 		SRSResponse response = new SRSResponse(SRSStatus.SUCCESS, "Employee created successfully!!, with id " + employee2.getId());
 		return ResponseEntity.ok(response);
 	}
@@ -67,7 +66,7 @@ public class EmployeeController {
 		 * } else { throw new SRSException("No employee found with email id " + emailId,
 		 * HttpStatus.NOT_FOUND); }
 		 */
-		employee.orElseThrow(() -> new SRSException("No employee found with email id " + emailId, HttpStatus.NOT_FOUND));
+		employee.orElseThrow(() -> new SRSException("No employee found with email id " + emailId, HttpStatus.NOT_FOUND, ErrorCode.USER_NOT_FOUND));
 		employee.ifPresent(emp  -> {
 			employeeInfo.setFirstName(emp.getFirstName());
 			employeeInfo.setId(emp.getId());

@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 public class SRSException extends RuntimeException {
 
 	private String message;
-	private String errorCode;
 	private HttpStatus httpStatus;
+	private ErrorCode errorCode;
 	
 	public SRSException(String message, HttpStatus httpStatus) {
 		super(message);
@@ -14,7 +14,7 @@ public class SRSException extends RuntimeException {
 		this.httpStatus = httpStatus;
 	}
 	
-	public SRSException(String message, HttpStatus httpStatus, String errorCode) {
+	public SRSException(String message, HttpStatus httpStatus, ErrorCode errorCode) {
 		this(message, httpStatus);
 		this.errorCode = errorCode;
 	}
@@ -24,7 +24,7 @@ public class SRSException extends RuntimeException {
 	}
 
 	public String getErrorCode() {
-		return errorCode;
+		return errorCode != null ? errorCode.getCode() : null;
 	}
 
 	public HttpStatus getHttpStatus() {

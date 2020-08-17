@@ -1,9 +1,6 @@
-# Spring AOP
+# springboot-rest-starter
 
-### Key Concepts
+1. Sample springboot rest apis starter project
 
-1. @Before advice, @After advice
+# Database Realtionships
 
-1. An aspect is a modularization of concern that cuts across multiple classes.
-
-### Spring Data JPA
