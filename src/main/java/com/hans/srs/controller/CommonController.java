@@ -34,6 +34,7 @@ public class CommonController {
 	@PostMapping("/code-set")
 	public ResponseEntity<SRSResponse> saveCodeSet(@RequestBody CodeSetRequest codeSetRequest) {
 		CodeSet codeSet = new CodeSet(codeSetRequest.getName(), codeSetRequest.getDescription());
+		System.out.println("Going to save code set");
 		codeSet = codeSetRepository.save(codeSet);
 		SRSResponse srsResponse = new SRSResponse(SRSStatus.SUCCESS, "Code set " + codeSet.getName() + " saved successfully with id " + codeSet.getId());
 		return ResponseEntity.ok(srsResponse);
