@@ -45,6 +45,8 @@ public class EmployeeController {
 		empDetails.setStreet(employeeRequest.getStreet());
 		empDetails.setBloodGroup(employeeRequest.getBloodGroup());
 		empDetails.setArea(employeeRequest.getArea());
+		empDetails.setCity(employeeRequest.getCity());
+		empDetails.setContactNumber(employeeRequest.getPrimaryContactNumber());
 		
 		employee.setEmployeeDetails(empDetails);
 		

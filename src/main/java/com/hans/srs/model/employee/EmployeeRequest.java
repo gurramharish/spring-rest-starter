@@ -12,6 +12,7 @@ public class EmployeeRequest {
 	private String area;
 	private String province;
 	private String zip;
+	private String primaryContactNumber;
 
 	public String getFirstName() {
 		return firstName;
@@ -92,6 +93,16 @@ public class EmployeeRequest {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+
+	public String getPrimaryContactNumber() {
+		return primaryContactNumber;
+	}
+
+	public void setPrimaryContactNumber(String primaryContactNumber) {
+		this.primaryContactNumber = primaryContactNumber;
+	}
+	
+	
 
 	
 }
