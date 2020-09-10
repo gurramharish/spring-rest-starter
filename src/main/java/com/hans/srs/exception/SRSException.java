@@ -8,6 +8,7 @@ public class SRSException extends RuntimeException {
 	private HttpStatus httpStatus;
 	private ErrorCode errorCode;
 	
+	
 	public SRSException(String message, HttpStatus httpStatus) {
 		super(message);
 		this.message = message;
